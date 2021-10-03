@@ -60,6 +60,7 @@ public class Notification extends CordovaPlugin {
     private static final String ACTION_BEEP           = "beep";
     private static final String ACTION_ALERT          = "alert";
     private static final String ACTION_CONFIRM        = "confirm";
+    private static final String ACTION_CONFIRM2        = "confirm2";
     private static final String ACTION_PROMPT         = "prompt";
     private static final String ACTION_ACTIVITY_START = "activityStart";
     private static final String ACTION_ACTIVITY_STOP  = "activityStop";
@@ -109,6 +110,10 @@ public class Notification extends CordovaPlugin {
             return true;
         }
         else if (action.equals(ACTION_CONFIRM)) {
+            this.confirm(args.getString(0), args.getString(1), args.getJSONArray(2), callbackContext);
+            return true;
+        }
+        else if (action.equals(ACTION_CONFIRM2)) {
             this.confirm(args.getString(0), args.getString(1), args.getJSONArray(2), callbackContext);
             return true;
         }
@@ -247,6 +252,98 @@ public class Notification extends CordovaPlugin {
         };
         this.cordova.getActivity().runOnUiThread(runnable);
     }
+
+    public synchronized void confirm2(final String message, final String title, final JSONArray buttonLabels, final CallbackContext callbackContext) {
+        final CordovaInterface cordova = this.cordova;
+
+        Runnable runnable = new Runnable() {
+            public void run() {
+                Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+                dlg.setMessage(message);
+                dlg.setTitle(title);
+                dlg.setCancelable(true);
+
+                // First button
+                if (buttonLabels.length() > 0) {
+                    try {
+                        dlg.setNegativeButton(buttonLabels.getString(0),
+                                new AlertDialog.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 1));
+                                    }
+                                });
+                    } catch (JSONException e) {
+                        LOG.d(LOG_TAG,"JSONException on first button.");
+                    }
+                }
+
+                // Second button
+                if (buttonLabels.length() > 1) {
+                    try {
+                        dlg.setNeutralButton(buttonLabels.getString(1),
+                                new AlertDialog.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 2));
+                                    }
+                                });
+                    } catch (JSONException e) {
+                        LOG.d(LOG_TAG,"JSONException on second button.");
+                    }
+                }
+
+                // Third button
+                if (buttonLabels.length() > 2) {
+                    try {
+                        dlg.setPositiveButton(buttonLabels.getString(2),
+                                new AlertDialog.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 3));
+                                    }
+                                });
+                    } catch (JSONException e) {
+                        LOG.d(LOG_TAG,"JSONException on third button.");
+                    }
+                }
+                dlg.setOnCancelListener(new AlertDialog.OnCancelListener() {
+                    public void onCancel(DialogInterface dialog)
+                    {
+                        dialog.dismiss();
+                        callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 0));
+                    }
+                });
+
+                changeTextDirection(dlg);
+            };
+        };
+        this.cordova.getActivity().runOnUiThread(runnable);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Builds and shows a native Android confirm dialog with given title, message, buttons.
