@@ -316,7 +316,7 @@ public class Notification extends CordovaPlugin {
                 But for some android versions is not visible (for example 5.1.1).
                 android.R.color.primary_text_light will make text visible on all versions. */
                 Resources resources = cordova.getActivity().getResources();
-                int promptInputTextColor = red;//resources.getColor(android.R.color.primary_text_light);
+                int promptInputTextColor = resources.getColor(android.R.color.primary_text_light);
                 promptInput.setTextColor(promptInputTextColor);
                 promptInput.setText(defaultText);
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
