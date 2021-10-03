@@ -361,8 +361,8 @@ public class Notification extends CordovaPlugin {
         Runnable runnable = new Runnable() {
             public void run() {
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                dlg.setMessage("Monkies Butt");
-                dlg.setTitle("King");
+                dlg.setMessage(message);
+                dlg.setTitle(title);
                 dlg.setCancelable(true);
 
                 // First button
