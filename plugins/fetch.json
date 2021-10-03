@@ -1,0 +1,18 @@
+{
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "info.androidabcd.plugins.custom": {
+    "source": {
+      "type": "local",
+      "path": "/Users/progaurab/Desktop/pluginDemo/HelloPlugin/node_modules/info.androidabcd.plugins.custom"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}
