@@ -13,7 +13,7 @@
     ]
   },
   "repository": "github:apache/cordova-plugin-dialogs",
-  "bugs": "https://github.com/apache/cordova-plugin-dialogs/issues",
+  "bugs": "https://github.com/cjmartin6162/cordova-plugin-alpha-dialogs-file-xhr.git/issues",
   "keywords": [
     "cordova",
     "notification",
