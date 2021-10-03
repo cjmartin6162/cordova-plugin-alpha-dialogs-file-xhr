@@ -52,7 +52,6 @@ module.exports = {
      *            message Message to display in the dialog.
      */
     progressStart: function (title, message) {
-        alert("1");
         exec(null, null, 'Notification', 'progressStart', [title, message]);
     },
 
@@ -60,7 +59,6 @@ module.exports = {
      * Close the progress dialog.
      */
     progressStop: function () {
-        alert("2");
         exec(null, null, 'Notification', 'progressStop', []);
     },
 
@@ -71,7 +69,6 @@ module.exports = {
      *            value 0-100
      */
     progressValue: function (value) {
-        alert("3");
         exec(null, null, 'Notification', 'progressValue', [value]);
     }
 };
