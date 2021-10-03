@@ -40,6 +40,9 @@ exports.defineAutoTests = function () {
         it('should contain a confirm function', function () {
             expect(typeof navigator.notification.confirm).toBeDefined();
             expect(typeof navigator.notification.confirm).toBe('function');
+
+            expect(typeof navigator.notification.confirm2).toBeDefined();
+            expect(typeof navigator.notification.confirm2).toBe('function');
         });
 
         it('should contain a prompt function', function () {
