@@ -81,8 +81,10 @@ module.exports = {
      * @param {String} defaultText          Textbox input value (default: empty string)
      */
     prompt: function (message, resultCallback, title, buttonLabels, defaultText) {
+                alert("Got Here");
+
         var _message = typeof message === 'string' ? message : JSON.stringify(message);
-        var _title = "Got Here";//typeof title === 'string' ? title : 'Prompt';
+        var _title = typeof title === 'string' ? title : 'Prompt';
         var _buttonLabels = buttonLabels || ['OK', 'Cancel'];
 
         // Strings are deprecated!
