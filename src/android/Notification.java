@@ -40,6 +40,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  * This class provides access to notifications on the device.
@@ -176,6 +180,36 @@ public class Notification extends CordovaPlugin {
         });
     }
 
+
+
+    public class MessageBox {
+        JFrame frame;
+
+        public static void main(String[] args) {
+            MessageBox db = new MessageBox();
+        }
+
+        public MessageBox() {
+            frame = new JFrame("Show Message Box");
+            JButton button = new JButton("Click");
+            button.setAlignmentX((float) 100.00);
+
+            button.addActionListener(new MyAction());
+            frame.add(button);
+            frame.setSize(300, 300);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+
+        public class MyAction implements ActionListener {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Message Box");
+            }
+        }
+    }
+
+
+
     /**
      * Builds and shows a native Android alert with given Strings
      * @param message           The message the alert should display
@@ -188,7 +222,7 @@ public class Notification extends CordovaPlugin {
 
         Runnable runnable = new Runnable() {
             public void run() {
-
+                new MessageBox();
                 Builder dlg = createDialog(cordova); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                 dlg.setMessage(message);
                 dlg.setTitle(title);
