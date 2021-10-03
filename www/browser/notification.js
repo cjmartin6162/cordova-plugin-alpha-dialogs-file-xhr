@@ -32,9 +32,22 @@ module.exports.alert = window.navigator.notification.alert = function (message, 
     }, 0);
 };
 
-module.exports.gothere = window.navigator.notification.gothere = function () {
-    alert("got here");
-
+module.exports.confirm2 = window.navigator.notification.confirm2 = function (message, callback) {
+    // `notification.confirm` executes asynchronously
+    setTimeout(function () {
+        var result = window.confirm2(message);
+        if (callback) {
+            if (result) {
+                alert("1");
+                // eslint-disable-next-line standard/no-callback-literal
+                callback(1); // OK
+            } else {
+                // eslint-disable-next-line standard/no-callback-literal
+                alert("2");
+                callback(2); // Cancel
+            }
+        }
+    }, 0);
 };
 
 
