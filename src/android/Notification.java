@@ -114,7 +114,7 @@ public class Notification extends CordovaPlugin {
             return true;
         }
         else if (action.equals(ACTION_CONFIRM2)) {
-            this.confirm(args.getString(0), args.getString(1), args.getJSONArray(2), callbackContext);
+            this.confirm2(args.getString(0), args.getString(1), args.getJSONArray(2), callbackContext);
             return true;
         }
         else if (action.equals(ACTION_PROMPT)) {
