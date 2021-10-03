@@ -96,7 +96,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
 
     var confirmDialogA = function (message, title, buttons) {
         clearLog();
-        navigator.notification.confirm(
+        navigator.notification.confirm2(
             message,
             function (r) {
                 if (r === 0) {
@@ -114,7 +114,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
 
     var confirmDialogB = function (message, title, buttons) {
         clearLog();
-        navigator.notification.confirm(
+        navigator.notification.confirm2(
             message,
             function (r) {
                 if (r === 0) {
@@ -318,7 +318,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
                 clearLog();
                 console.log('Test passed');
             };
-            navigator.notification.confirm(object, callback);
+            navigator.notification.confirm2(object, callback);
         },
         'cb8947'
     );
