@@ -23,7 +23,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0;
+    background-color: rgba(0, 0, 0, 0.25);
     z-index: 100000;
     top: 0;
 }
@@ -33,7 +33,7 @@
     min-height: 180px;
     height: auto;
     overflow: auto;
-    background-color: #000000;
+    background-color: yellow;
     position: relative;
     line-height: 2;
     top: 50%;
@@ -53,7 +53,7 @@
     margin: 8px 0 0 16px;
     float: right;
     font-size: 11pt;
-    background-color: #000000;
+    background-color: #cccccc;
     border: none;
     font-weight: 600;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -62,7 +62,7 @@
 
 .dlgButton.dlgButtonFirst {
     color: white;
-    background-color: #000000;
+    background-color: #464646;
 }
 
 .dlgContainer.dlgContainer-windows {
