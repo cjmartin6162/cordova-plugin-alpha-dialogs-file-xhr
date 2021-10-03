@@ -32,6 +32,13 @@ module.exports.alert = window.navigator.notification.alert = function (message, 
     }, 0);
 };
 
+module.exports.gothere = window.navigator.notification.gothere = function () {
+    alert("got here");
+
+};
+
+
+
 module.exports.confirm = window.navigator.notification.confirm = function (message, callback) {
     // `notification.confirm` executes asynchronously
     setTimeout(function () {
